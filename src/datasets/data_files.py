@@ -490,7 +490,9 @@ def get_data_patterns(base_path: str, download_config: Optional[DownloadConfig] 
                     absolute_pattern = pattern
                 else:
                     raise FileNotFoundError(f"Unable to find '{pattern}'")
-                absolute_pattern, _ = _prepare_path_and_storage_options(absolute_pattern, download_config=download_config)
+                absolute_pattern, _ = _prepare_path_and_storage_options(
+                    absolute_pattern, download_config=download_config
+                )
                 regex = re.compile(glob_translate(absolute_pattern))
                 matched_paths = [path for path in all_local_files if regex.match(path)]
                 if not matched_paths:
